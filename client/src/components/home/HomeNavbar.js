@@ -15,7 +15,8 @@ class HomeNavbar extends Component {
 
   render() {
     return (
-      <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme={"dark"}>
+      <div style={{position: 'fixed', width: '100%', zIndex: '9999'}}>
+      <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme={"light"}>
         <Menu.Item key="home">
           <Icon type="home"/>
         </Menu.Item>
@@ -23,9 +24,13 @@ class HomeNavbar extends Component {
           <Icon type="shop"/> Restaurantes
         </Menu.Item>
         <Menu.Item key="howitworks">
-          <Icon type="setting"/>¿Como funciona?
+          <Icon type="smile-o"/>¿Como funciona?
+        </Menu.Item>
+        <Menu.Item key="login" style={{float:"right"}}>
+          <Icon type="user"/>Iniciar Sesión
         </Menu.Item>
       </Menu>
+      </div>
     );
   }
 }
