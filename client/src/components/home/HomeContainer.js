@@ -9,8 +9,8 @@ class HomeContainer extends Component{
   render(){
     return (
       <div>
-        <HomeNavbar/>
-        <FirstPage/>
+        <HomeNavbar history={this.props.history} />
+        <FirstPage history={this.props.history}/>
         <SecondPage/>
         <ThirdPage/>
         <HomeFooter/>

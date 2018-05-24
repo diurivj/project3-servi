@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0",
     "antd": "^3.5.3",
+    "firebase": "^5.0.3",
     "font-awesome": "^4.7.0",
     "material-ui": "^0.20.1",
     "react": "^16.3.2",
@@ -12,7 +13,9 @@
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
-    "scrollreveal": "^3.4.0"
+    "react-toastr": "^3.0.0",
+    "scrollreveal": "^3.4.0",
+    "toastr": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -15,7 +15,7 @@ class HomeFooter extends Component{
             <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" name="email" />
           </div>
           <div>
-            <Link to="#" > Facebook </Link><br/>
+            <Link to="#" > Facebook </Link> <br/>
             <Link to="#" > Twitter </Link>
           </div>
         </div>

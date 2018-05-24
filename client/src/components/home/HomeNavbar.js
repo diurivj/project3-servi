@@ -13,21 +13,29 @@ class HomeNavbar extends Component {
     });
   };
 
+  redirectlogin = (url) => {
+    this.props.history.push(`/${url}`);
+  };
+
+  redirecthome = () => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div style={{position: 'fixed', width: '100%', zIndex: '9999'}}>
       <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme={"light"}>
-        <Menu.Item key="home">
+        <Menu.Item key="home" onClick={this.redirecthome}>
           <Icon type="home"/>
         </Menu.Item>
-        <Menu.Item key="restaurants">
+        <Menu.Item key="restaurants" onClick={()=>this.redirectlogin('restaurants')}>
           <Icon type="shop"/> Restaurantes
         </Menu.Item>
-        <Menu.Item key="howitworks">
+        <Menu.Item key="howitworks" onClick={()=>this.redirectlogin('howitworks')}>
           <Icon type="smile-o"/>¿Como funciona?
         </Menu.Item>
-        <Menu.Item key="login" style={{float:"right"}}>
-          <Icon type="user"/>Iniciar Sesión
+        <Menu.Item key="login" style={{float:"right"}} onClick={()=>this.redirectlogin('login')} >
+          <Icon type="user" />Iniciar Sesión
         </Menu.Item>
       </Menu>
       </div>

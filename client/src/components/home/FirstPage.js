@@ -12,7 +12,7 @@ class FirstPage extends Component{
           <p>No pierdas más tiempo decidiendo que comer</p>
         </div>
         <Card className="home" bordered={false}>
-        <FormSignup/>
+        <FormSignup history={this.props.history}/>
         </Card>
       </div>
     );
