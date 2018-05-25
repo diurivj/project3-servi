@@ -18,8 +18,7 @@ router.get('/', isAuthenticated, (req, res, next) => {
   .catch(e => res.send(e));
 });
 
-router.post('/newRestaurant', isAuthenticated, upload.single('photo'), (req, res, next) => {
-  req.body.photo = `${req.protocol}://${req.headers.host}/images/restaurants/` + req.file.filename;
+router.post('/newrestaurant', (req, res, next) => {
   Restaurant.create(req.body)
   .then(restaurant => {
     res.json(restaurant);
@@ -27,7 +26,7 @@ router.post('/newRestaurant', isAuthenticated, upload.single('photo'), (req, res
   .catch(e => res.send(e));
 });
 
-router.get('/restaurants', isAuthenticated, (req, res, next) => {
+router.get('/restaurants', (req, res, next) => {
   Restaurant.find()
   .then(restaurants => {
     res.json(restaurants);

@@ -24,11 +24,19 @@ export function logIn(user){
     .then(user => user)
 }
 
+export function logout(){
+  return fetch (baseURL + '/logout')
+    .then(r => r.json())
+    .catch(user => user)
+}
+
 export function searchUsers(){
   return fetch(baseURL + '/mastermind/users')
     .then(r => r.json())
     .then(users => users)
 }
+
+
 
 
 

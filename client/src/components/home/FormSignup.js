@@ -11,7 +11,7 @@ class FormSignup extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     signUp(this.state.user)
       .then(user => {
         toastr.success('Por favor revisa tu email', '¡Cuenta creada exitosamente!');

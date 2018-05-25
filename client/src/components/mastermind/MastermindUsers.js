@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {List, Avatar} from 'antd';
 import {searchUsers} from "../../services/AuthServices";
 
 class MastermindUsers extends Component{
@@ -16,17 +17,14 @@ class MastermindUsers extends Component{
   render(){
     return(
       <div>
-        <ul>
-          {this.state.users.map(user =>{
-            return (
-              <li>{user.name}</li>
-            );
-          })}
-        </ul>
+        <List size="small" bordered dataSource={this.state.users} renderItem={user => (
+          <List.Item actions={[<a>edit</a>, <a>delete</a>]}>
+            <List.Item.Meta avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />} title={user.name} description={user.email} />
+          </List.Item>
+        )}/>
       </div>
     );
   }
-
 }
 
 export default MastermindUsers;

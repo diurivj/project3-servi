@@ -3,11 +3,11 @@ const Schema   = mongoose.Schema;
 
 const restaurantSchema = new Schema({
   name: String,
-  price: Number,
+  price: String,
   desc: String,
   photo: String,
   schedule: Date,
-  menu: [String],
+  menu: [{String}],
   available: Number,
 },{
   timestamps:{
