@@ -12,7 +12,7 @@ class MastermindDisplay extends Component{
     return (
       <div style={{display: "flex"}}>
       <div style={{width: 256}}>
-        <Menu style={{height: "100vh"}}  mode="inline" theme="light" inlineCollapsed={true}>
+        <Menu style={{height: "100vh"}}  mode="inline" theme="light" inlineCollapsed={true} >
           <Menu.Item key="1">
             <Link to="/mastermind/home">
               <Icon type="qq"/>
