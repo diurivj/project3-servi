@@ -11,3 +11,9 @@ export function createRestaurant(restaurant){
     .then(r => r.json())
     .then(restaurant => restaurant)
 }
+
+export function getRestaurants(){
+  return fetch(baseURL + '/mastermind/restaurants')
+    .then(r => r.json())
+    .then(users => users)
+}

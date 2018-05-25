@@ -4,6 +4,7 @@ import {Link, Route} from 'react-router-dom';
 import MastermindInfo from "./MastermindInfo";
 import MastermindUsers from "./MastermindUsers";
 import MastermindCreate from "./MastermindCreate";
+import MastermindRestaurants from "./MastermindRestaurants";
 
 class MastermindDisplay extends Component{
 
@@ -25,8 +26,10 @@ class MastermindDisplay extends Component{
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
-            <Icon type="shop"/>
-            <span>Restaurants</span>
+            <Link to="/mastermind/restaurants">
+              <Icon type="shop"/>
+              <span>Restaurants</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="4">
             <Icon type="book"/>
@@ -44,6 +47,7 @@ class MastermindDisplay extends Component{
           <Route path="/mastermind/home" component={MastermindInfo} />
           <Route path="/mastermind/users" component={MastermindUsers} />
           <Route path="/mastermind/newrestaurant" component={MastermindCreate} />
+          <Route path="/mastermind/restaurants" component={MastermindRestaurants} />
         </div>
       </div>
     );
