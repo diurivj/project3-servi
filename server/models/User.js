@@ -6,16 +6,14 @@ const userSchema = new Schema({
   name: String,
   lastname: String,
   email: String,
-  photo: String,
   role: {
     type: String,
     enum: ['USER', 'RESTAURANT', 'MASTERMIND'],
     default: 'USER'
   },
-  tables: [String],
-  restaurant: {
+  reservations: {
     type: Schema.Types.ObjectId,
-    ref: 'Restaurant'
+    ref: 'Reservation'
   }
 },{
   timestamps: {

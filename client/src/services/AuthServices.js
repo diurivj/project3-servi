@@ -24,6 +24,12 @@ export function logIn(user){
     .then(user => user)
 }
 
+export function searchUsers(){
+  return fetch(baseURL + '/mastermind/users')
+    .then(r => r.json())
+    .then(users => users)
+}
+
 
 
 

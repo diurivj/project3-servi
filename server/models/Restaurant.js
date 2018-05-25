@@ -5,11 +5,10 @@ const restaurantSchema = new Schema({
   name: String,
   price: Number,
   desc: String,
-  map: String,
   photo: String,
   schedule: Date,
   menu: [String],
-  available: Number
+  available: Number,
 },{
   timestamps:{
     createdAt: 'created_at',

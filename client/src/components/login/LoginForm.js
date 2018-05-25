@@ -33,7 +33,12 @@ class LoginForm extends Component {
     e.preventDefault();
     logIn(this.state.user)
       .then(user => {
-        this.props.history.push('/')
+        console.log(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        console.log(localStorage.getItem('user'));
+        this.setState({user:{}});
+        if(user.role !== 'MASTERMIND') return this.props.history.push('/profile');
+          return this.props.history.push('/mastermind');
       })
       .catch(e => console.log(e))
   };

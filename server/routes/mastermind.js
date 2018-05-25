@@ -11,7 +11,11 @@ const isAuthenticated = (req, res, next) => {
 };
 
 router.get('/', isAuthenticated, (req, res, next) => {
-  res.send('welcome master');
+  User.findById(req.user._id)
+  .then(user => {
+    res.json(user);
+  })
+  .catch(e => res.send(e));
 });
 
 router.post('/newRestaurant', isAuthenticated, upload.single('photo'), (req, res, next) => {
@@ -31,7 +35,7 @@ router.get('/restaurants', isAuthenticated, (req, res, next) => {
   .catch(e => res.send(e));
 });
 
-router.get('/users', isAuthenticated, (req, res, next) => {
+router.get('/users', (req, res, next) => {
   User.find()
   .then(users => {
     res.json(users);
