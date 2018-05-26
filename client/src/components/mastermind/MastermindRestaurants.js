@@ -19,7 +19,10 @@ class MastermindRestaurants extends Component{
       <div>
         <List size="small" bordered dataSource={this.state.restaurants} renderItem={restaurant => (
           <List.Item actions={[<a>edit</a>, <a>delete</a>]}>
-            <List.Item.Meta avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />} title={restaurant.name} description={restaurant.desc} />
+            <List.Item.Meta avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+            title={restaurant.name}
+            description={restaurant.desc}
+            />
           </List.Item>
         )}/>
       </div>

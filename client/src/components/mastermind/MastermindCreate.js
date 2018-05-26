@@ -5,7 +5,6 @@ import * as toastr from "toastr";
 import moment from 'moment';
 const FormItem = Form.Item;
 const { TextArea } = Input;
-
 const format = 'HH:mm';
 const options = [
   {
@@ -54,6 +53,25 @@ class MastermindCreate extends Component{
     this.setState({restaurant});
   };
 
+  onChangeFile = (info) => {
+    console.log(info.file.originFileObj);
+    const {restaurant} = this.state;
+    restaurant.photo = info.file.originFileObj;
+    this.setState({restaurant});
+  };
+
+  onChange1 = (time) => {
+    const {restaurant} = this.state;
+    restaurant.openTime = Date(time._d);
+    this.setState({restaurant});
+  };
+
+  onChange2 = (time) => {
+    const {restaurant} = this.state;
+    restaurant.closeTime = Date(time._d);
+    this.setState({restaurant});
+  };
+
   render(){
     return(
       <div>
@@ -69,11 +87,11 @@ class MastermindCreate extends Component{
           </FormItem>
           <FormItem>
             <label>Open Hour</label> <br/>
-            <TimePicker defaultValue={moment('00:00', format)} format={format} name="openTime" />
+            <TimePicker defaultValue={moment('00:00', format)} format={format} name="openTime" onChange={this.onChange1} />
           </FormItem>
           <FormItem>
             <label>Close Hour</label> <br/>
-            <TimePicker defaultValue={moment('12:00', format)} format={format} name="closeTime" />
+            <TimePicker defaultValue={moment('12:00', format)} format={format} name="closeTime" onChange={this.onChange2} />
           </FormItem>
           <FormItem>
             <label>Capacity</label> <br/>
@@ -84,9 +102,9 @@ class MastermindCreate extends Component{
             <TextArea rows={4} onChange={this.handleChange} name="desc" />
           </FormItem>
           <FormItem>
-            <Upload  action="/upload.do" listType="picture" name="photo">
+            <Upload onChange={this.onChangeFile}>
               <Button>
-                <Icon type="upload" /> Click to upload
+                <Icon type="upload" /> Click to Upload
               </Button>
             </Upload>
           </FormItem>

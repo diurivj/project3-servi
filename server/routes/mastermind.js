@@ -18,7 +18,8 @@ router.get('/', isAuthenticated, (req, res, next) => {
   .catch(e => res.send(e));
 });
 
-router.post('/newrestaurant', (req, res, next) => {
+router.post('/newrestaurant', upload.single('photo'), (req, res, next) => {
+  req.body.photo = `${req.protocol}://${req.headers.host}/images/restaurants/` + req.file.filename;
   Restaurant.create(req.body)
   .then(restaurant => {
     res.json(restaurant);
