@@ -14,7 +14,7 @@ class FormSignup extends Component {
     e.preventDefault();
     signUp(this.state.user)
       .then(user => {
-        toastr.success('Por favor revisa tu email', '¡Cuenta creada exitosamente!');
+        toastr.success('¡Cuenta creada exitosamente!');
         this.props.history.push('/login')
       })
       .catch(e => console.log(e))

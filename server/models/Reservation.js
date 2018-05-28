@@ -10,6 +10,7 @@ const reservationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Restaurant'
   },
+  time: Date,
   date: Date,
   menu: [{String}],
   people: Number

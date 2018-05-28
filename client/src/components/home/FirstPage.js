@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Card} from 'antd';
+import {Card, Button} from 'antd';
+import {Link} from 'react-router-dom';
 import './Home.css';
 import FormSignup from "./FormSignup";
 
@@ -14,6 +15,7 @@ class FirstPage extends Component{
         <Card className="home" bordered={false}>
         <FormSignup history={this.props.history}/>
         </Card>
+        <Link to='/'> <Button> Ir al App </Button> </Link>
       </div>
     );
   }

@@ -28,10 +28,10 @@ class HomeNavbar extends Component {
         <Menu.Item key="home" onClick={this.redirecthome}>
           <Icon type="home"/>
         </Menu.Item>
-        <Menu.Item key="restaurants" onClick={()=>this.redirectlogin('restaurants')}>
+        <Menu.Item key="restaurants" onClick={()=>this.redirectlogin('app/restaurants')}>
           <Icon type="shop"/> Restaurantes
         </Menu.Item>
-        <Menu.Item key="howitworks" onClick={()=>this.redirectlogin('howitworks')}>
+        <Menu.Item key="howitworks" onClick={()=>this.redirectlogin('app/howitworks')}>
           <Icon type="smile-o"/>¿Como funciona?
         </Menu.Item>
         <Menu.Item key="login" style={{float:"right"}} onClick={()=>this.redirectlogin('login')} >

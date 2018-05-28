@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Card} from 'antd';
+import {Card, Button} from 'antd';
+import {Link} from 'react-router-dom';
 
 class UserInfo extends Component{
 
@@ -29,6 +30,9 @@ class UserInfo extends Component{
         <Card title='Reservaciones Anteriores' bordered={false} style={{ width: "100%" }}>
           <p>Ninguna</p>
         </Card>
+        <div>
+          <Link to='/app'> <Button> Reservar </Button> </Link>
+        </div>
       </div>
     );
   }

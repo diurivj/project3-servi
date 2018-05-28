@@ -59,9 +59,11 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'DiuriVJ';
 
+const appPage    = require('./routes/appPage');
 const mastermind = require('./routes/mastermind');
 const auth       = require('./routes/auth');
 const index      = require('./routes/index');
+app.use('/app', appPage);
 app.use('/mastermind', mastermind);
 app.use('/', auth);
 app.use('/', index); 

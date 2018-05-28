@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import LoginForm from "./LoginForm";
 
 class LoginContainer extends Component{
+
+  componentWillMount() {
+    if (localStorage.getItem('user'))
+      return this.props.history.push('/profile');
+  }
+
   render(){
     return(
       <div>
