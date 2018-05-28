@@ -18,3 +18,15 @@ export function getRestaurants(){
     .then(r => r.json())
     .then(users => users)
 }
+
+export function createReservation(reservation){
+  return fetch (baseURL + '/app', {
+    method: 'post',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(reservation)
+  })
+    .then(r => r.json())
+    .then(reservation =>  reservation)
+}

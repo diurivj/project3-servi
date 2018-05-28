@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Form, Button, Cascader, TimePicker, DatePicker, Row, Col, Card} from 'antd';
+import {Form, Button, Cascader, TimePicker, DatePicker, Row, Col, Card, Modal} from 'antd';
 import moment from 'moment';
-import {getRestaurants} from "../../services/AdminServices";
+import * as toastr from "toastr";
+import {createReservation, getRestaurants} from "../../services/AdminServices";
 const FormItem = Form.Item;
 const format = 'HH:mm';
 
@@ -52,16 +53,16 @@ const options = [
   }
 ];
 
-function onChange(date, dateString) {
-  console.log(date, dateString);
-}
-
 class AppSearch extends Component{
 
   state = {
     restaurant: {},
     restaurants: [],
-    cascade: []
+    cascade: [],
+    reservation: {},
+    ModalText: 'Confirmar reservación',
+    visible: false,
+    confirmLoading: false,
   };
 
   getCascade = (restaurants) => {
@@ -87,16 +88,68 @@ class AppSearch extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-    /*createRestaurant(this.state.restaurant)
+    createReservation(this.state.reservation)
       .then(r => {
-        toastr.success('Restaurante creado');
-        this.props.history.push('/mastermind');
+        this.showModal();
         console.log(r);
       })
-      .catch(e => console.log(e));*/
+      .catch(e => console.log(e));
+  };
+
+  onChange = (value, selected) => {
+    const {reservation} = this.state;
+    reservation.people = value[0];
+    this.setState({reservation});
+    console.log(this.state.reservation);
+  };
+
+  onChange1 = (time, dateString) => {
+    const {reservation} = this.state;
+    reservation.date = dateString;
+    this.setState({reservation});
+  };
+
+  onChange2 = (time, dateString) => {
+    console.log('date string', dateString)
+    const {reservation} = this.state;
+    reservation.time = dateString;
+    this.setState({reservation});
+  };
+
+  onChange3 = (value) => {
+    const {reservation} = this.state;
+    reservation.restaurant = value[0];
+    this.setState({reservation});
+  };
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  handleOk = () => {
+    this.setState({
+      ModalText: 'Buscando disponibilidad',
+      confirmLoading: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        visible: false,
+        confirmLoading: false,
+      });
+      toastr.success('¡Reservación creada exitosamente!');
+      this.props.history.push('/profile');
+    }, 2000);
+  };
+  handleCancel = () => {
+    console.log('Clicked cancel button');
+    this.setState({
+      visible: false,
+    });
   };
 
   render(){
+    const { visible, confirmLoading, ModalText } = this.state;
     return(
       <div>
         <Row>
@@ -106,25 +159,28 @@ class AppSearch extends Component{
                 <h1>Reserve en restaurantes de la manera más fácil</h1>
                 <Form onSubmit={this.handleSubmit} className="login-form" layout="inline" style={{paddingTop: '50px'}}>
                   <FormItem>
-                    <Cascader options={options} placeholder="5 personas" name="people" />
+                    <Cascader options={options} placeholder="5 personas" name="people" onChange={this.onChange}/>
                   </FormItem>
                   <FormItem>
-                    <DatePicker onChange={onChange} name="date" />
+                    <DatePicker onChange={this.onChange1} name="date" />
                   </FormItem>
                   <FormItem>
-                    <TimePicker defaultValue={moment('09:00', format)} format={format} name="time" />
+                    <TimePicker defaultValue={moment('09:00', format)} format={format} name="time" onChange={this.onChange2} />
                   </FormItem>
                   <FormItem>
-                    <Cascader options={this.state.cascade} placeholder="Restaurante" name="restaurant" />
+                    <Cascader options={this.state.cascade} placeholder="Restaurante" name="restaurant" onChange={this.onChange3}/>
                   </FormItem>
                   <FormItem>
-                    <Button type="primary" className="login-form-button" htmlType={"submit"}> Buscar mesa </Button>
+                    <Button type="primary" className="login-form-button" htmlType={"submit"} > Buscar mesa </Button>
                   </FormItem>
                 </Form>
               </Card>
             </div>
           </Col>
         </Row>
+        <Modal title="Reservación" visible={visible} onOk={this.handleOk} confirmLoading={confirmLoading} onCancel={this.handleCancel} >
+          <p>{ModalText}</p>
+        </Modal>
       </div>
     );
   }

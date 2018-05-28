@@ -72,6 +72,13 @@ class MastermindCreate extends Component{
     this.setState({restaurant});
   };
 
+  onChange = (value) => {
+    console.log(value);
+    const {restaurant} = this.state;
+    restaurant.price = value;
+    this.setState({restaurant});
+  };
+
   render(){
     return(
       <div>
@@ -83,7 +90,7 @@ class MastermindCreate extends Component{
           </FormItem>
           <FormItem>
             <label>Price</label>
-            <Cascader options={options} placeholder="Price" name="price" />
+            <Cascader options={options} placeholder="Price" name="price" onChange={this.onChange} />
           </FormItem>
           <FormItem>
             <label>Open Hour</label> <br/>

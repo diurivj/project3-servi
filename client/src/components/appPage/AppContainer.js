@@ -6,7 +6,7 @@ class AppContainer extends Component{
   render(){
     return(
       <div style={{ backgroundImage: `url(${image})`, height: '50vh', width: '100%'}}>
-        <AppSearch />
+        <AppSearch history={this.props.history} />
       </div>
     );
   }
