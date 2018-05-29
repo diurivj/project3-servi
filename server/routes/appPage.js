@@ -19,8 +19,8 @@ router.get('/restaurants', (req, res, next) => {
 
 router.post('/',  (req, res, next) => {
   Reservation.create(req.body)
-  .then(reservartion => {
-    res.json(reservartion);
+  .then(reservation => {
+    return res.json(reservation);
   })
   .catch(e => res.send(e));
 });

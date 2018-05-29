@@ -60,7 +60,7 @@ class AppSearch extends Component{
     restaurants: [],
     cascade: [],
     reservation: {},
-    ModalText: 'Confirmar reservación',
+    ModalText: '¿Estás seguro de reservar?',
     visible: false,
     confirmLoading: false,
   };
@@ -81,7 +81,6 @@ class AppSearch extends Component{
       .then(restaurants => {
         this.setState({restaurants});
         this.getCascade(restaurants);
-        console.log(this.state.restaurants);
       })
       .catch(e => console.log(e))
   }
@@ -91,16 +90,23 @@ class AppSearch extends Component{
     createReservation(this.state.reservation)
       .then(r => {
         this.showModal();
-        console.log(r);
+        this.toUser();
       })
       .catch(e => console.log(e));
+  };
+
+  toUser = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const {reservation} = this.state;
+    reservation['user'] = user._id;
+    this.setState({reservation});
+    console.log(this.state.reservation);
   };
 
   onChange = (value, selected) => {
     const {reservation} = this.state;
     reservation.people = value[0];
     this.setState({reservation});
-    console.log(this.state.reservation);
   };
 
   onChange1 = (time, dateString) => {
@@ -110,7 +116,6 @@ class AppSearch extends Component{
   };
 
   onChange2 = (time, dateString) => {
-    console.log('date string', dateString)
     const {reservation} = this.state;
     reservation.time = dateString;
     this.setState({reservation});
