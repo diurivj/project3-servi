@@ -11,7 +11,7 @@ const userSchema = new Schema({
     enum: ['USER', 'RESTAURANT', 'MASTERMIND'],
     default: 'USER'
   },
-  reservations: {
+  reservation: {
     type: Schema.Types.ObjectId,
     ref: 'Reservation'
   }

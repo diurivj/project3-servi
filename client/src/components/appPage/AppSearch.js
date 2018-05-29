@@ -81,6 +81,7 @@ class AppSearch extends Component{
       .then(restaurants => {
         this.setState({restaurants});
         this.getCascade(restaurants);
+        this.toUser();
       })
       .catch(e => console.log(e))
   }
@@ -90,7 +91,6 @@ class AppSearch extends Component{
     createReservation(this.state.reservation)
       .then(r => {
         this.showModal();
-        this.toUser();
       })
       .catch(e => console.log(e));
   };
@@ -143,7 +143,7 @@ class AppSearch extends Component{
         confirmLoading: false,
       });
       toastr.success('¡Reservación creada exitosamente!');
-      this.props.history.push('/profile');
+      this.props.history.push(`/app/menu/${this.state.reservation.restaurant}`);
     }, 2000);
   };
   handleCancel = () => {
