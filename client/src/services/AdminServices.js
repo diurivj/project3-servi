@@ -30,3 +30,14 @@ export function createReservation(reservation){
     .then(r => r.json())
     .then(reservation =>  reservation)
 }
+
+export function getMenu(id){
+  return fetch(baseURL + `/app/menu/${id}`)
+    .then(r => {
+      if(!r.ok) return Promise.reject(r.statusText);
+      return r.json();
+    })
+    .then(restaurant => {
+      return restaurant;
+    });
+}

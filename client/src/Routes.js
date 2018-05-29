@@ -8,6 +8,7 @@ import MastermindDisplay from "./components/mastermind/MastermindDisplay";
 import Restaurants from "./components/appPage/Restaurants";
 import Howitworks from "./components/appPage/Howitworks";
 import AppContainer from "./components/appPage/AppContainer";
+import RestaurantMenu from "./components/appPage/RestaurantMenu";
 
 export const Routes = () => {
   return(
@@ -20,6 +21,7 @@ export const Routes = () => {
       <Route exact path='/app' component={AppContainer} />
       <Route exact path='/app/restaurants' component={Restaurants} />
       <Route exact path='/app/howitworks' component={Howitworks} />
+      <Route path='/app/menu/:menu' component={RestaurantMenu} />
     </Switch>
   );
 };

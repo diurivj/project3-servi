@@ -25,4 +25,12 @@ router.post('/',  (req, res, next) => {
   .catch(e => res.send(e));
 });
 
+router.get('/menu/:id', (req, res) => {
+  Restaurant.findById(req.params.id)
+  .then(restaurant => {
+    res.json(restaurant);
+  })
+  .catch(e => res.send(e));
+});
+
 module.exports = router;
