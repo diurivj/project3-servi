@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {finishReservation, getMenu} from "../../services/AdminServices";
-import {List, Form, Button, Cascader, Modal} from 'antd';
+import {List, Form, Button, Cascader, Modal, Card} from 'antd';
+import coverphoto from '../../assets/RESTAURANT_food_architecture_interior_design_room_people_1920x1080.jpg';
+import orderphoto from '../../assets/color_delicious_diet_epicure_food_fork_fruits_health_healthy_nutrition_plate_restaurant_tasty_5130x3840.jpg';
 const FormItem = Form.Item;
 
 class RestaurantMenu extends Component{
@@ -72,20 +74,25 @@ class RestaurantMenu extends Component{
     return(
       <div>
         <div>
-          <h2>Escoge tus alimentos</h2>
+          <h1 style={{marginTop: '50px'}}>Selecciona tus alimentos</h1>
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap'}}>
-        <div style={{width: '40%', textAlign: 'left', marginLeft: '30px'}}>
-          <Form className="login-form" layout="inline" >
-            <FormItem>
-              <Cascader options={this.state.cascade} onChange={this.onChange} />
-            </FormItem>
-            <FormItem>
-              <Button type="primary" className="login-form-button" onClick={this.addFood}> Añadir </Button>
-            </FormItem>
+        <div style={{display: 'flex', flexWrap: 'wrap', margin: '0 auto', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{width: '40%', textAlign: 'left', margin: '20px' }}>
+          <Card hoverable cover={<img alt="cover-menu" src={coverphoto} height='250px' width='100%' />} >
+            <h2>Menú</h2>
+            <Form className="login-form" layout="inline" >
+              <FormItem>
+                <Cascader options={this.state.cascade} onChange={this.onChange} />
+              </FormItem>
+              <FormItem>
+                <Button type="primary" className="login-form-button" onClick={this.addFood}> Añadir </Button>
+              </FormItem>
           </Form>
+          </Card>
         </div>
-        <div style={{width: '40%', textAlign: 'left', marginLeft: '30px'}}>
+        <div style={{width: '40%', textAlign: 'left', margin: '20px' }}>
+          <Card hoverable cover={<img alt='cover-order' src={orderphoto} height='250px' width='100%' />}>
+          <h2>Orden</h2>
           <List size="small" bordered dataSource={this.state.menu} renderItem={food => (
             <List.Item actions={[<Button onClick={this.deleteFood}> Borrar </Button>]}>
               <List.Item.Meta title={food.menu}  />
@@ -94,6 +101,7 @@ class RestaurantMenu extends Component{
           <div style={{paddingTop: '10px'}}>
             <Button type="primary" onClick={this.finishReservation}> Finalizar pedido </Button>
           </div>
+          </Card>
         </div>
         </div>
       </div>

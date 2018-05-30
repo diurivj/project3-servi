@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import FontAwesome from 'react-fontawesome';
 import { Button, Icon } from 'antd';
 import {Link} from 'react-router-dom';
 
