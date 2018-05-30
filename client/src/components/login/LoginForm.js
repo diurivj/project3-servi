@@ -19,7 +19,7 @@ class LoginForm extends Component {
         if(!result.user) return;
         console.log(result.user);
         localStorage.setItem("user", JSON.stringify(result.user));
-        this.props.history.push('/profile')
+        this.props.history.push('/app')
       })
       .catch(e => console.log(e));
   }
@@ -37,7 +37,7 @@ class LoginForm extends Component {
         localStorage.setItem('user', JSON.stringify(user));
         console.log(localStorage.getItem('user'));
         this.setState({user:{}});
-        if(user.role !== 'MASTERMIND') return this.props.history.push('/profile');
+        if(user.role !== 'MASTERMIND') return this.props.history.push('/app');
           return this.props.history.push('/mastermind');
       })
       .catch(e => console.log(e))

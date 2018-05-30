@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {getMenu} from "../../services/AdminServices";
-import {List, Form, Button, Cascader} from 'antd';
+import {finishReservation, getMenu} from "../../services/AdminServices";
+import {List, Form, Button, Cascader, Modal} from 'antd';
 const FormItem = Form.Item;
 
 class RestaurantMenu extends Component{
@@ -9,7 +9,7 @@ class RestaurantMenu extends Component{
     restaurant: {},
     order: [],
     cascade: [],
-    orderList: []
+    menu: []
   };
 
   getCascade = (restaurant) => {
@@ -39,12 +39,33 @@ class RestaurantMenu extends Component{
   };
 
   addFood = () => {
-    const {order, orderList} = this.state;
+    const {order, menu} = this.state;
     const joined = this.state.order.concat(order);
     this.setState({ order: joined });
-    orderList.push(order);
-    this.setState(orderList);
-    console.log('orderList:', this.state.orderList)
+    menu.push(order);
+    this.setState(menu);
+    console.log('menu:', this.state.menu)
+  };
+
+  finishReservation = () => {
+    const {menu} = this.state;
+    finishReservation(this.props.match.params.menu, menu)
+      .then(reservation => {
+        this.success();
+        console.log('reservation',reservation);
+      })
+      .catch(e => console.log(e))
+  };
+
+  success = () => {
+    const modal = Modal.success({
+      title: 'Reservación finalizada',
+      content: 'Acuda al restaurante reservado en hora establecida y con una identificación oficial',
+    });
+    setTimeout(() => {
+      modal.destroy();
+      this.props.history.push('/profile')
+    }, 2000);
   };
 
  render(){
@@ -65,11 +86,14 @@ class RestaurantMenu extends Component{
           </Form>
         </div>
         <div style={{width: '40%', textAlign: 'left', marginLeft: '30px'}}>
-          <List size="small" bordered dataSource={this.state.orderList} renderItem={food => (
+          <List size="small" bordered dataSource={this.state.menu} renderItem={food => (
             <List.Item actions={[<Button onClick={this.deleteFood}> Borrar </Button>]}>
               <List.Item.Meta title={food.menu}  />
             </List.Item>
           )}/>
+          <div style={{paddingTop: '10px'}}>
+            <Button type="primary" onClick={this.finishReservation}> Finalizar pedido </Button>
+          </div>
         </div>
         </div>
       </div>

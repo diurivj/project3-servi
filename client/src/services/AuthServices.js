@@ -26,7 +26,7 @@ export function logIn(user){
 
 export function logout(){
   return fetch (baseURL + '/logout')
-    .then(r => r.json())
+    .then(r => localStorage.removeItem('user'))
     .catch(user => user)
 }
 

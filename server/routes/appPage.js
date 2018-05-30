@@ -33,4 +33,12 @@ router.get('/menu/:id', (req, res) => {
   .catch(e => res.send(e));
 });
 
+router.post('/menu/:id', (req, res, next) => {
+  Reservation.findOneAndUpdate({restaurant: req.params.id}, {$set:{menu: req.body}}, {upsert: true, 'new': true} )
+  .then(reservation => {
+    res.json(reservation);
+  })
+  .catch(e => res.send(e));
+});
+
 module.exports = router;

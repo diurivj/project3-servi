@@ -16,9 +16,14 @@ class MastermindInfo extends Component{
   }
 
   handleSubmit = (e) => {
+    const {user} = this.state;
     e.preventDefault();
     logout()
-      .then(r => this.props.history.push('/'))
+      .then(r => {
+        this.props.history.push('/');
+          localStorage.removeItem('user');
+          this.setState({user});
+      })
       .catch(e => console.log(e));
   };
 

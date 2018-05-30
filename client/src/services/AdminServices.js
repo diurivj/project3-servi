@@ -41,3 +41,15 @@ export function getMenu(id){
       return restaurant;
     });
 }
+
+export function finishReservation(id, reservation){
+  return fetch(baseURL + `/app/menu/${id}`, {
+    method: 'post',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(reservation)
+  })
+    .then(r => r.json())
+    .then(reservation => reservation)
+}

@@ -14,8 +14,15 @@ class UserInfo extends Component{
     this.setState({user});
   }
 
+  logout = () => {
+    const {user} = this.state;
+    localStorage.removeItem('user');
+    this.setState({user});
+  };
+
   render(){
     const {user} = this.state;
+    console.log(user);
     return(
       <div style={{ padding: '30px' }}>
         <Card title='Perfil' bordered={false} style={{ width: "100%" }}>
@@ -31,6 +38,7 @@ class UserInfo extends Component{
         </Card>
         <div>
           <Link to='/app'> <Button> Reservar </Button> </Link>
+          <Link to='/'> <Button onClick={this.logout} > Logout </Button> </Link>
         </div>
       </div>
     );

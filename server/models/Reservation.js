@@ -12,7 +12,9 @@ const reservationSchema = new Schema({
   },
   time: String,
   date: String,
-  menu: [{String}],
+  menu: [{
+    menu: String
+  }],
   people: Number
 },{
   timestamps: {
