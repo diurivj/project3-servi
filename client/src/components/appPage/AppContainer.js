@@ -8,7 +8,7 @@ class AppContainer extends Component{
     if (!localStorage.getItem('user'))
       return this.props.history.push('/login');
   }
-  
+
   render(){
     return(
       <div style={{ backgroundImage: `url(${image})`, height: '50vh', width: '100%'}}>
