@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import FontAwesome from 'react-fontawesome';
-import { Button } from 'antd';
+import { Button, Icon } from 'antd';
 import {Link} from 'react-router-dom';
 
 const how = {
   paddingTop: '50px',
-  paddingBottom: '100px',
-  backgroundColor: 'white',
+  paddingBottom: '150px',
+  backgroundColor: '#ECECEC',
   width: '100',
-  height: '500px'
+  height: '100%'
 };
 
 const flex = {
@@ -26,12 +26,6 @@ const div = {
   margin: '20px'
 };
 
-const span = {
-  color: 'darkgray',
-  fontSize: '200px',
-  marginBottom: '20px'
-};
-
 class Howitworks extends Component{
   render(){
     return(
@@ -39,26 +33,27 @@ class Howitworks extends Component{
         <div>
           <h1> ¿Como funciona? </h1>
         </div>
-        <div>
-          <p>Usa Réservi y come en tus restaurantes favoritos sin hacer largas filas.
-            Al momento de llegar al restaurante tus alimentos empiezan a prepararse</p>
+        <div style={{  paddingBottom: '20px'}}>
+          <h3 style={{ fontSize: 20 }}>Usa Réservi y come en tus restaurantes favoritos sin hacer largas filas.<br/>
+            Al momento de llegar, tus alimentos empiezan a prepararse.
+          </h3>
         </div>
         <div style={flex}>
           <div style={div}>
-            <FontAwesome name="twitch" style={span}/>
-            <p>Obtén descuentos en grupos de + 10 personas</p>
+            <Icon type="gift" style={{ fontSize: 150, color: 'red' }} />
+            <p style={{ fontSize: 20 }}>Obtén descuentos en grupos de + 10 personas</p>
           </div>
           <div style={div}>
-            <FontAwesome name="twitch" style={span}/>
-            <p>Divide la cuenta de forma más efectiva</p>
+            <Icon type="pie-chart" style={{ fontSize: 150, color: '#08c' }} />
+            <p style={{ fontSize: 20 }}>Divide la cuenta de forma más efectiva</p>
           </div>
           <div style={div}>
-            <FontAwesome name="twitch" style={span}/>
-            <p>Obtén todos los datos de tu cuenta en un simple código</p>
+            <Icon type="qrcode" style={{ fontSize: 150, color: 'black' }} />
+            <p style={{ fontSize: 20 }}>Obtén todos los datos de tu cuenta en un simple código</p>
           </div>
           <div style={div}>
-            <FontAwesome name="twitch" style={span}/>
-            <p>Llega, check-in y disfruta tus alimentos</p>
+            <Icon type="check" style={{ fontSize: 150, color: 'green' }} />
+            <p style={{ fontSize: 20 }}>Llega, haz check-in y disfruta tus alimentos</p>
           </div>
         </div>
         <Link to='/'> <Button> Inicio </Button> </Link>

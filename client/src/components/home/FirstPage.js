@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import {Card, Button} from 'antd';
-import {Link} from 'react-router-dom';
 import './Home.css';
 import FormSignup from "./FormSignup";
 
 class FirstPage extends Component{
+
+  goTo = () => {
+    this.props.history.push('/app');
+  };
+
   render(){
     return(
       <div style={{ background: '#ffffff', paddingTop: '1x', height: '100vh'}}>
@@ -13,9 +17,11 @@ class FirstPage extends Component{
           <p>No pierdas más tiempo decidiendo que comer</p>
         </div>
         <Card className="home" bordered={false}>
-        <FormSignup history={this.props.history}/>
+        <FormSignup history={this.props.history} />
         </Card>
-        <Link to='/'> <Button> Ir al App </Button> </Link>
+        <div className='float' >
+          <Button onClick={this.goTo} size={'large'} type={'primary'}> Ir al App </Button>
+        </div>
       </div>
     );
   }

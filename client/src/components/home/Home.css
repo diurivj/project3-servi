@@ -65,8 +65,8 @@
 }
 
 .flex div span {
-    color: darkgray;
-    font-size: 200px;
+    color: #1890ff;
+    font-size: 150px;
     margin-bottom: 20px;
 }
 
@@ -130,6 +130,8 @@
     margin: 10px;
 }
 
-button {
-
+.float{
+    float: left;
+    margin-top: -200px;
+    margin-left: 500px;
 }
