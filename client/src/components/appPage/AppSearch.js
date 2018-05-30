@@ -186,6 +186,9 @@ class AppSearch extends Component{
         <Modal title="Reservación" visible={visible} onOk={this.handleOk} confirmLoading={confirmLoading} onCancel={this.handleCancel} >
           <p>{ModalText}</p>
         </Modal>
+        <div>
+          <h1 style={{paddingTop: '200px', letterSpacing: '2px'}}>RÉSERVI</h1>
+        </div>
       </div>
     );
   }

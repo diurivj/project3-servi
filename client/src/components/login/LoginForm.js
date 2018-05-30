@@ -56,7 +56,6 @@ class LoginForm extends Component {
         <Form onSubmit={this.handleSubmit} className="login-form">
           <h2>Inicia Sesión</h2>
           <FormItem>
-            <Button className="redes" type="primary" shape="circle" icon="facebook" size="large" />
             <Button className="redes" type="primary" shape="circle" icon="google-plus" size="large" onClick={this.loginWithGoogle} />
           </FormItem>
           <Divider>O</Divider>
